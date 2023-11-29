@@ -1,0 +1,192 @@
+/* Variables for Colors */
+:root {
+  /* Colors for the letter boxes */
+  --box-green: rgb(83, 141, 78);
+  --box-yellow: rgb(181, 159, 59);
+  --box-grey: rgb(58, 58, 60);
+  /* Colors for the dark mode */
+  --darkmode-bg-color: rgb(34, 34, 34);
+  --darkmode-text-color: rgb(255, 255, 255);
+  --darkmode-boxBorder-color: rgb(102, 102, 102);
+  /* Other colors */
+  --keypad-bg-color: #eee;
+}
+
+body {
+  text-align: center;
+  font-size: 1em;
+  font-family: verdana;
+  margin: 0;
+  background-color: var(--darkmode-bg-color);
+  color: var(--darkmode-text-color);
+}
+h1 {
+  font-size: 1.2em;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--darkmode-boxBorder-color);
+  margin: 0 0 30px 0;
+  color: var(--darkmode-text-color);
+}
+/* Game Styling */
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: var(--darkmode-text-color);
+}
+.row > div {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--darkmode-boxBorder-color);
+  margin: 4px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+.row > div.green {
+  --background: var(--box-green);
+  --border-color: var(--box-green);
+  animation: flip 0.5s ease forwards;
+}
+.row > div.grey {
+  --background: var(--box-grey);
+  --border-color: var(--box-grey);
+  animation: flip 0.6s ease forwards;
+}
+.row > div.yellow {
+  --background: var(--box-yellow);
+  --border-color: var(--box-yellow);
+  animation: flip 0.5s ease forwards;
+}
+.row > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.row > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.row > div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.row > div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.row.current > div.filled {
+  animation: bounce 0.2s ease-in-out forwards;
+}
+.keypad {
+  max-width: 500px;
+  margin: 20px auto;
+}
+.keypad > div {
+  margin: 4px;
+  width: 40px;
+  height: 50px;
+  background: var(--keypad-bg-color);
+  display: inline-block;
+  border-radius: 6px;
+  line-height: 50px;
+  text-transform: capitalize;
+  color: black;
+}
+.keypad > div.green {
+  background: var(--box-green);
+  color: var(--darkmode-text-color);
+  transition: all 0.3s ease-in;
+}
+.keypad > div.yellow {
+  background: var(--box-yellow);
+  color: var(--darkmode-text-color);
+  transition: all 0.3s ease-in;
+}
+.keypad > div.grey {
+  background: var(--box-grey);
+  color: var(--darkmode-text-color);
+  transition: all 0.3s ease-in;
+}
+.modal {
+  background: rgba(102, 102, 102, 0.7);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.modal div {
+  max-width: 480px;
+  background: var(--darkmode-bg-color);
+  padding: 40px;
+  border-radius: 10px;
+  margin: 10% auto;
+  box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+  color: var(--darkmode-text-color);
+}
+
+.modal .solutionWin {
+  color: #ff004c;
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.modal .solutionLose {
+  color: #00ff4c;
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal button {
+  border-radius: 1em;
+  background-color: var(--darkmode-boxBorder-color);
+  padding: 0.5em 1em 0.5em 1em;
+  color: var(--darkmode-text-color);
+}
+
+footer {
+  font-size: small;
+  padding: 0.5em;
+  color: var(--darkmode-text-color);
+}
+
+/* Game Animations */
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+    background: var(--darkmode-bg-color);
+    border-color: var(--darkmode-boxBorder-color);
+  }
+  45% {
+    transform: rotateX(90deg);
+    background: var(--darkmode-bg-color);
+    border-color: var(--darkmode-boxBorder-color);
+  }
+  55% {
+    transform: rotateX(90deg);
+    background: var(--background);
+    border-color: var(--border-color);
+  }
+  100% {
+    transform: rotateX(0deg);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #eee;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    border-color: #ddd;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    border-color: var(--darkmode-text-color);
+  }
+}
